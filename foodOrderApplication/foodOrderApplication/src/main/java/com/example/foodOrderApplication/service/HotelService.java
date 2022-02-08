@@ -1,5 +1,6 @@
 package com.example.foodOrderApplication.service;
 
+import com.example.foodOrderApplication.entity.Food;
 import com.example.foodOrderApplication.entity.Hotel;
 import com.example.foodOrderApplication.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,9 @@ public class HotelService {
     }
     public Hotel getByHotelId(Long id){
         return hotelRepository.getById(id);
+    }
+
+    public void removeHotelById(Long id) {
+        hotelRepository.deleteById(id);
     }
 }

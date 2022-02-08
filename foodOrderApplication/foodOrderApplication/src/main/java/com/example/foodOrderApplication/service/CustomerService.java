@@ -21,4 +21,12 @@ public class CustomerService {
     public Customer findCustomerByUserName(String userName){
         return customerRepository.getById(userName);
     }
+
+    public Customer findById(String userName) {
+        return customerRepository.getById(userName);
+    }
+
+    public Customer updateCustomer(Customer existingCustomer) {
+        return customerRepository.save(existingCustomer);
+    }
 }

@@ -1,15 +1,18 @@
 package com.example.foodOrderApplication.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "hotel_id")
+    @Column(name = "id")
     private Long id;
     private String name;
     private String address;
+    @OneToMany(mappedBy = "hotel")
+    private List<Food> menu;
 
     public Hotel(){}
     public Hotel(String name, String address) {
@@ -41,4 +44,11 @@ public class Hotel {
         this.address = address;
     }
 
+    public List<Food> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Food> menu) {
+        this.menu = menu;
+    }
 }

@@ -2,12 +2,15 @@ package com.example.foodOrderApplication.controller;
 
 import com.example.foodOrderApplication.entity.Customer;
 import com.example.foodOrderApplication.service.CustomerService;
+import com.example.foodOrderApplication.service.FoodService;
 import com.example.foodOrderApplication.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +20,8 @@ public class CustomerController {
         private CustomerService customerService;
         @Autowired
         private HotelService hotelService;
+        @Autowired
+        private FoodService foodService;
 
     //Home
     @GetMapping("/")
@@ -47,7 +52,7 @@ public class CustomerController {
         return "login";
     }
 
-    //Login - after login user will go to the list of movies page
+    //Login - after login user will go to the list of hotels page
     @GetMapping("/login")
     public String loginForm() {
         return "login";
@@ -80,5 +85,35 @@ public class CustomerController {
             //return "redirect:/login";
         }
         return "hotels";
+    }
+
+    @RequestMapping("updateCustomerProfile/{id}")
+    public String updateCustomerDetails(@PathVariable String id, Model model){
+        model.addAttribute("customer",customerService.findById(id));
+        return "updateCustomerProfile";
+    }
+    @PostMapping("/restaurantDetails")
+    public String updateCustomer(HttpServletRequest request,Model model){
+        Customer existingCustomer= customerService.findById(request.getParameter("userName"));
+        existingCustomer.setName(request.getParameter("name"));
+//        existingCustomer.setEmail(request.getParameter("email"));
+        existingCustomer.setAddress(request.getParameter("address"));
+        existingCustomer.setPhoneNumber(request.getParameter("phoneNumber"));
+        existingCustomer.setPassword(request.getParameter("password"));
+        customerService.updateCustomer(existingCustomer);
+        model.addAttribute("name",existingCustomer.getName());
+        model.addAttribute("mobileNumber",existingCustomer.getPhoneNumber());
+//        model.addAttribute("email",existingCustomer.getEmail());
+        model.addAttribute("address",existingCustomer.getAddress());
+        model.addAttribute("password",existingCustomer.getPassword());
+        model.addAttribute("userName", existingCustomer.getUserName());
+        return "hotels";
+    }
+
+    @GetMapping("/{userName}/menu/{id}")
+    public String viewMenu(@PathVariable String userName,@PathVariable Long id, HttpServletRequest request, Model model) {
+        model.addAttribute("menu",id);
+        model.addAttribute("usermenu", foodService.foodList(id));
+        return "menu";
     }
 }

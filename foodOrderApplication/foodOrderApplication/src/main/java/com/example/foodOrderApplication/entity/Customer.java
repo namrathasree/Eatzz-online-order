@@ -16,8 +16,8 @@ public class Customer {
     @Column(unique = true)
     private String password;
     private String phoneNumber;
-//    @OneToMany(mappedBy = "customer")
-//    private List<BookedSeats> bookedSeats;
+    @OneToMany(mappedBy = "customer")
+    private List<Cart> cart;
 
     public Customer() {
     }

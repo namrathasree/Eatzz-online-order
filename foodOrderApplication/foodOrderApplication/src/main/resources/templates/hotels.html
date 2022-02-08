@@ -25,32 +25,55 @@ table {
 tbody {
     background-color: #e4f0f5;
 }
+body {
+    background-image: url('background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Montserrat;
+    padding:100px 100px 350px 100px;
+}
+    .navigation {
+  width: 90%;
+  background-color: #333;
+  overflow: auto;
+  position:fixed;
+  margin-left:0px;
+  top:2px;
+}
+
+.navigation a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navigation a:hover {
+  background-color: lightgrey;
+  color: black;
+}
+
+.navigation a.active {
+  background-color: green;
+  color: white;
+}
  </style>
 </head>
 <body>
-<!--<h1>Movies List</h1>-->
-<!--<span th:text="${message}"/>-->
-<!--<nav class="navbar navbar-expand-sm bg-dark navbar-dark">-->
-<!--    <div class="container-fluid">-->
-<!--        <ul class="navbar-nav">-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="/">Home</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link active" href="#" th:text="${userName}"></a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" th:href="@{/{userName}/myBookings (userName=${userName})}">My Bookings</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" href="/">Logout</a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</nav>-->
+<span th:text="${message}"/>
+<div class="navigation">
+    <a href="/">Home</a>
+    <a th:href="@{/updateCustomerProfile/{id} (id=${userName})}">Update Profile</a>
+    <a th:href="@{/{userName}/myBookings (userName=${userName})}">My Orders</a>
+    <a class="active" href="#" style="float:right" th:text="${userName}"></a>
+    <a href="/">Logout</a>
+</div>
 <div class="container">
     <div class="row">
-        <h3>Hotels</h3>
+        <h1 class="text-center text-dark">Hotels</h1>
     </div>
     <table align="center" border = "1" cellpadding = "5" cellspacing = "5"width="80%">
         <thead>
@@ -65,10 +88,11 @@ tbody {
         <tr th:each="hotel: ${hotels}">
             <td th:text="${hotel.name}"></td>
             <td th:text="${hotel.address}"></td>
+<!--            <td><button type="button" class="btn btn-success">View Menu</button> </td>-->
 
-<!--            <td>-->
-<!--                <a class="btn btn-success" th:href="@{/{userName}/hotel/{id} (userName=${userName},id=${hotel.id})}">View Menu</a>-->
-<!--            </td>-->
+            <td>
+                <a class="btn btn-success" th:href="@{/{userName}/menu/{id} (userName=${userName},id=${hotel.id})}">View Menu</a>
+            </td>
         </tr>
         </tbody>
 

@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>View Hotels</title>
+    <title>View Menu</title>
     <style>
 
 .text-center {
@@ -36,14 +36,13 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
 </style>
 
- </style>
+    </style>
 </head>
 <body>
 <div class="'p-3" style="background-color:black;">
-<h1 class="text-center text-light">Hotels List</h1>
+    <h1 class="text-center text-light">Menu List</h1>
 </div>
 <span th:text="${message}"/>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -52,12 +51,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="/adminHome">Home</a>
             </li>
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link active" href="#" th:text="${userName}"></a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                <a class="nav-link" th:href="@{/{userName}/myBookings (userName=${userName})}">My Bookings</a>-->
-<!--            </li>-->
+            <!--            <li class="nav-item">-->
+            <!--                <a class="nav-link active" href="#" th:text="${userName}"></a>-->
+            <!--            </li>-->
+            <!--            <li class="nav-item">-->
+            <!--                <a class="nav-link" th:href="@{/{userName}/myBookings (userName=${userName})}">My Bookings</a>-->
+            <!--            </li>-->
             <li class="nav-item">
                 <a class="nav-link" href="/admin">Logout</a>
             </li>
@@ -65,28 +64,29 @@
     </div>
 </nav>
 <div class="col-6 container mt-5">
+    <div class="row">
+        <h3>Hotels</h3>
+    </div>
     <table class="table table-striped">
         <thead>
         <tr>
-<!--            <th scope="col">Hotel Id</th>-->
-            <th scope="col">Hotel Name</th>
-            <th scope="col">Hotel Address</th>
+            <!--            <th scope="col">Hotel Id</th>-->
+            <th scope="col">Dish Name</th>
+            <th scope="col">Dish Address</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="hotel: ${adminhotels}">
-<!--            <td th:text="${hotel.id}"></td>-->
-            <td th:text="${hotel.name}"></td>
-            <td th:text="${hotel.address}"></td>
-<!--            <td><button type="button" th:href="updatemenu"  class="btn btn-success">Update Menu</button> </td>-->
+        <tr th:each="food: ${adminmenu}">
+            <!--            <td th:text="${hotel.id}"></td>-->
+            <td th:text="${food.name}"></td>
+            <td th:text="${food.price}"></td>
+                        <td><button type="button" class="btn btn-success">Update Menu</button> </td>
 
-                        <td>
-                            <a class="btn btn-success" th:href="@{/updateMenu/{id} (id=${hotel.id})}">Add Menu</a>
-                            <a class="btn btn-success" th:href="@{/viewMenu/{id} (id=${hotel.id})}">View Menu</a>
-                            <a class="btn btn-danger" href="" th:href="@{/viewHotels/delete/{id} (id=${hotel.id})}" >Delete</a></td>
-                        </td>
+<!--            <td>-->
+<!--                <a class="btn btn-success" th:href="@{/updateMenu/{id} (id=${hotel.id})}">Update Menu</a>-->
+<!--            </td>-->
         </tr>
         </tbody>
 
