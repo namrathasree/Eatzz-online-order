@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eatzz Online Order</title>
+    <!--Bootstrap Link-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!--font awesome Link-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <style>
+thead,
+tfoot {
+    background-color: #3f87a6;
+    color: #fff;
+}
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200, 200, 200);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: .8rem;
+    }
+    tbody {
+    background-color: #e4f0f5;
+}
+.text-center {
+  text-align: center;
+}
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+
+</head>
+<body>
+<!--<nav class="navbar navbar-expand-sm">-->
+<!--    <ul class="navbar-nav">-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="/"><span class="fa fa-home"> Home</span></a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" th:href="@{/{username}/indianWear (username=${username})}">-->
+<!--                <span class="fa"> Indian Wear </span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" th:href="@{/{username}/westernWear (username=${username})}">-->
+<!--                <span class="fa"> Western Wear </span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link active" href="#"><span class="fa fa-shopping-cart"> My Cart </span></a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#" th:text="${username}"></a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="/"><span class="fas fa-sign-out-alt"> Logout</span></a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</nav>-->
+<div class="container">
+<div class="row">
+    <h1 class="text-center text-dark">Cart</h1>
+</div>
+<table align="center" border="1" cellspacing="5" cellpadding="5" width="80%">
+    <thead>
+    <tr>
+        <th scope="col">Dish Name</th>
+        <th scope="col">Dish Price</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="cart: ${mycart}">
+<!--        cart.getFood().getName()-->
+        <td th:text="${cart.food.name}"></td>
+        <td th:text="${cart.food.price}"></td>
+    </tr>
+    </tbody>
+</table></div>
+<div>
+    <button class="btn btn-success"> BUY</button>
+<!--                <a href="#" class="btn btn-success">Buy</a>-->
+<!--                <a th:href="@{/cart/{cartId}/{userName} (cartId=${cart.id},userName=${userName})}" class="btn btn-success">Remove from Cart</a>-->
+            </div>
+</body>
+</html>
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <h1 class="text-center text-dark">Hotels</h1>-->
+<!--    </div>-->
+<!--    <table align="center" border = "1" cellpadding = "5" cellspacing = "5"width="80%">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th scope="col">Hotel Name</th>-->
+<!--            <th scope="col">Hotel Address</th>-->
+<!--            <th scope="col">Action</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+
+<!--        <tbody>-->
+<!--        <tr th:each="hotel: ${hotels}">-->
+<!--            <td th:text="${hotel.name}"></td>-->
+<!--            <td th:text="${hotel.address}"></td>-->
+<!--            &lt;!&ndash;            <td><button type="button" class="btn btn-success">View Menu</button> </td>&ndash;&gt;-->
+
+<!--            <td>-->
+<!--                <a class="btn btn-success" th:href="@{/{userName}/menu/{id} (userName=${userName},id=${hotel.id})}">View Menu</a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+
+<!--    </table>-->
+<!--</div>-->

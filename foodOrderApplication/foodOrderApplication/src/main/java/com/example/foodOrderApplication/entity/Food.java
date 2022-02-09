@@ -56,4 +56,12 @@ public class Food {
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
+
+    public List<Cart> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<Cart> cart) {
+        this.cart = cart;
+    }
 }

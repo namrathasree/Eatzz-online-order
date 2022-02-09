@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Cart {
     @Id
     @GeneratedValue
-    private Long cartId;
+    private Long id;
     @JsonIgnore
     @ManyToOne
     private Customer customer;
@@ -19,11 +19,11 @@ public class Cart {
     public Cart(){}
 
     public Long getId() {
-        return cartId;
+        return id;
     }
 
     public void setId(Long id) {
-        this.cartId = id;
+        this.id = id;
     }
 
     public Customer getCustomer() {

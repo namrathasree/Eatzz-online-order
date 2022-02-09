@@ -76,4 +76,11 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    public List<Cart> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<Cart> cart) {
+        this.cart = cart;
+    }
 }

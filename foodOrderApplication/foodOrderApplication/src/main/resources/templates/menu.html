@@ -25,14 +25,6 @@ table {
     tbody {
     background-color: #e4f0f5;
 }
-body {
-    background-image: url('background1.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: Montserrat;
-    padding:100px 100px 350px 100px;
-}
 .text-center {
   text-align: center;
 }
@@ -73,6 +65,9 @@ body {
             <li class="nav-item">
                 <a class="nav-link" href="/adminHome">Home</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/{userName}/cart (userName=${userName})}"><span class="fa fa-shopping-cart"> My Cart </span></a>
+            </li>
             <!--            <li class="nav-item">-->
             <!--                <a class="nav-link active" href="#" th:text="${userName}"></a>-->
             <!--            </li>-->
@@ -104,9 +99,10 @@ body {
             <!--            <td th:text="${hotel.id}"></td>-->
             <td th:text="${food.name}"></td>
             <td th:text="${food.price}"></td>
-            <td><button type="button" class="btn btn-success">Order Now</button> </td>
-<!--            <a th:href="@{/{username}/cart/{id} (username=${username},id=${dress.id})}" class="btn btn-success">Add To Cart</a>-->
-
+<!--            <td><button type="button" class="btn btn-success">Order Now</button> </td>-->
+            <td>
+            <a th:href="@{/{userName}/cart/{id} (userName=${userName},id=${food.id})}" class="btn btn-success">Add To Cart</a>
+            </td>
             <!--            <td>-->
             <!--                <a class="btn btn-success" th:href="@{/updateMenu/{id} (id=${hotel.id})}">Update Menu</a>-->
             <!--            </td>-->

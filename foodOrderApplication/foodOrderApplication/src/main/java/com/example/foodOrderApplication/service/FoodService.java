@@ -20,4 +20,9 @@ public class FoodService {
     public List<Food> foodList(Long id) {
         return foodRepository.findByHotelId(id);
     }
+
+    public Food getById(Long id) {
+        return foodRepository.getById(id);
+    }
+
 }
